@@ -14,21 +14,18 @@ public class GraphUtils {
 				{ 1, 0, 0, 0, 0, 0 }, { 0, 0, 1, 0, 0, 0 }, { 0, 1, 0, 0, 0, 0 } };
 		return adjacencyMatrix;
 	}
-	
-	public static ArrayList<ArrayList<Integer>> convertAdjacencyMatrixToAdjacencyList(int[][] adjacencyMatrix)
-	{
-		ArrayList<ArrayList<Integer>> adjacencyList=new ArrayList<ArrayList<Integer>>();	
-		for(int i=0;i<adjacencyMatrix.length;i++)
-		{
-			ArrayList<Integer> listt=new ArrayList<Integer>();
-			for(int j=0;j<adjacencyMatrix[i].length;j++)
-			{
-				if(adjacencyMatrix[i][j]==1)
+
+	public static ArrayList<ArrayList<Integer>> convertAdjacencyMatrixToAdjacencyList(int[][] adjacencyMatrix) {
+		ArrayList<ArrayList<Integer>> adjacencyList = new ArrayList<ArrayList<Integer>>();
+		for (int i = 0; i < adjacencyMatrix.length; i++) {
+			ArrayList<Integer> listt = new ArrayList<Integer>();
+			for (int j = 0; j < adjacencyMatrix[i].length; j++) {
+				if (adjacencyMatrix[i][j] == 1)
 					listt.add(j);
 			}
 			adjacencyList.add(listt);
 		}
-		
+
 		return adjacencyList;
 	}
 
@@ -170,12 +167,15 @@ public class GraphUtils {
 
 	}
 
-	public static void printDFSGivenAdjacencyListRecursive(ArrayList<ArrayList<Integer>> adjacencyList, int startNodeIndex) {
+	public static void printDFSGivenAdjacencyListRecursive(ArrayList<ArrayList<Integer>> adjacencyList,
+			int startNodeIndex) {
 		boolean visited[] = new boolean[adjacencyList.size()];
-		printDFSGivenAdjacencyListRecursiveVariant(adjacencyList, visited,startNodeIndex);
+		printDFSGivenAdjacencyListRecursiveVariant(adjacencyList, visited, startNodeIndex);
 
 	}
-	private static void printDFSGivenAdjacencyListRecursiveVariant(ArrayList<ArrayList<Integer>> adjacencyList, boolean[] visited,int startNodeIndex) {
+
+	private static void printDFSGivenAdjacencyListRecursiveVariant(ArrayList<ArrayList<Integer>> adjacencyList,
+			boolean[] visited, int startNodeIndex) {
 
 		if (visited[startNodeIndex])
 			return;// end of recursion
@@ -183,24 +183,55 @@ public class GraphUtils {
 			visited[startNodeIndex] = true;
 			System.out.println("Visited " + startNodeIndex);
 			for (int i = 0; i < adjacencyList.get(startNodeIndex).size(); i++) {
-				printDFSGivenAdjacencyListRecursiveVariant(adjacencyList, visited, adjacencyList.get(startNodeIndex).get(i).intValue());
+				printDFSGivenAdjacencyListRecursiveVariant(adjacencyList, visited,
+						adjacencyList.get(startNodeIndex).get(i).intValue());
 			}
 		}
 
 	}
-//
-//	public static void printBFSIterativeGivenAdjacencyMatrix()
-//	{
-//		
-//	}
-//	
-//	public static void printBFSIterativeGivenAdjacencyMatrix()
-//	{
-//		
-//	}
-//	
-//	public static void printBFSIterativeGivenAdjacencyMatrix()
-//	{
-//		
-//	}
+
+	public static void printBFSIterativeGivenAdjacencyMatrix(int[][] adjacencyMatrix, int startNodeIndex) {
+		// bfs uses a queue
+		ArrayList<Integer> theQueue = new ArrayList<Integer>();
+		boolean[] visited = new boolean[adjacencyMatrix.length];
+		int counter = 0;
+
+		theQueue.add(startNodeIndex);
+		while (counter < theQueue.size()) {
+			// System.out.println("step "+theQueue.toString());
+			if (!visited[counter]) {
+				visited[theQueue.get(counter).intValue()] = true;
+				for (int i = 0; i < adjacencyMatrix[counter].length; i++) {
+					if (adjacencyMatrix[theQueue.get(counter).intValue()][i] == 1 && !visited[i]) {
+						theQueue.add(i);
+					}
+				}
+
+			}
+			counter++;
+		}
+
+		System.out.println(theQueue.toString());
+	}
+
+	public static void printBFSIterativeGivenAdjacencyList(ArrayList<ArrayList<Integer>> adjacencyList,
+			int startNodeIndex) {
+		ArrayList<Integer> theQueue = new ArrayList<Integer>();
+		boolean[] visited = new boolean[adjacencyList.size()];
+		theQueue.add(new Integer(startNodeIndex));
+		int counter = 0;
+		while (counter < theQueue.size()) {
+			if (!visited[theQueue.get(counter)]) {
+				visited[theQueue.get(counter)] = true;
+				for (Integer i : adjacencyList.get(theQueue.get(counter).intValue())) {
+					if (!visited[i.intValue()])
+						theQueue.add(i);
+				}
+			}
+			counter++;
+		}
+
+		System.out.println(theQueue.toString());
+	}
+
 }
