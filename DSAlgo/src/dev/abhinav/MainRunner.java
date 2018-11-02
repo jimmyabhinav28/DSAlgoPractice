@@ -11,7 +11,8 @@ public class MainRunner {
 
 //		testDFSIterativeWithAdjacencyMatrix();
 //		testDFSIterativeWithAdjacencyList();
-		testDFSRecursiveWithAdjacencyMatrix();
+//		testDFSRecursiveWithAdjacencyMatrix();
+		testDFSRecursiveWithAdjacencyList();
 	}
 	
 	private static void testDFSIterativeWithAdjacencyMatrix()
@@ -41,5 +42,15 @@ public class MainRunner {
 		int startNodeIndex=2;
 		MatrixUtils.print2DMatrix(adjancencyMatrix);
 		GraphUtils.printDFSGivenAdjacencyMatrixRecursive(adjancencyMatrix, startNodeIndex);
+	}
+	
+	private static void testDFSRecursiveWithAdjacencyList()
+	{
+		int adjacencyMatrix[][]=GraphUtils.getSampleAdjacencyMatrix();
+		ArrayList<ArrayList<Integer>> adjacencyList=GraphUtils.convertAdjacencyMatrixToAdjacencyList(adjacencyMatrix);
+//		int startNodeIndex=0;
+		int startNodeIndex=2;
+		GraphUtils.printAdjacencyList(adjacencyList);
+		GraphUtils.printDFSGivenAdjacencyListRecursive(adjacencyList, startNodeIndex);
 	}
 }

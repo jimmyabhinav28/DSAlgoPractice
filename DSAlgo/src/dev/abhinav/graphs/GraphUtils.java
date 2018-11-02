@@ -14,6 +14,23 @@ public class GraphUtils {
 				{ 1, 0, 0, 0, 0, 0 }, { 0, 0, 1, 0, 0, 0 }, { 0, 1, 0, 0, 0, 0 } };
 		return adjacencyMatrix;
 	}
+	
+	public static ArrayList<ArrayList<Integer>> convertAdjacencyMatrixToAdjacencyList(int[][] adjacencyMatrix)
+	{
+		ArrayList<ArrayList<Integer>> adjacencyList=new ArrayList<ArrayList<Integer>>();	
+		for(int i=0;i<adjacencyMatrix.length;i++)
+		{
+			ArrayList<Integer> listt=new ArrayList<Integer>();
+			for(int j=0;j<adjacencyMatrix[i].length;j++)
+			{
+				if(adjacencyMatrix[i][j]==1)
+					listt.add(j);
+			}
+			adjacencyList.add(listt);
+		}
+		
+		return adjacencyList;
+	}
 
 	public static int[][] constructGraphAdjacencyMatrixFromInput() {
 		Scanner scanner = new Scanner(System.in);
@@ -152,4 +169,38 @@ public class GraphUtils {
 		}
 
 	}
+
+	public static void printDFSGivenAdjacencyListRecursive(ArrayList<ArrayList<Integer>> adjacencyList, int startNodeIndex) {
+		boolean visited[] = new boolean[adjacencyList.size()];
+		printDFSGivenAdjacencyListRecursiveVariant(adjacencyList, visited,startNodeIndex);
+
+	}
+	private static void printDFSGivenAdjacencyListRecursiveVariant(ArrayList<ArrayList<Integer>> adjacencyList, boolean[] visited,int startNodeIndex) {
+
+		if (visited[startNodeIndex])
+			return;// end of recursion
+		else {
+			visited[startNodeIndex] = true;
+			System.out.println("Visited " + startNodeIndex);
+			for (int i = 0; i < adjacencyList.get(startNodeIndex).size(); i++) {
+				printDFSGivenAdjacencyListRecursiveVariant(adjacencyList, visited, adjacencyList.get(startNodeIndex).get(i).intValue());
+			}
+		}
+
+	}
+//
+//	public static void printBFSIterativeGivenAdjacencyMatrix()
+//	{
+//		
+//	}
+//	
+//	public static void printBFSIterativeGivenAdjacencyMatrix()
+//	{
+//		
+//	}
+//	
+//	public static void printBFSIterativeGivenAdjacencyMatrix()
+//	{
+//		
+//	}
 }
