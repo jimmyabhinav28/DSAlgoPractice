@@ -13,4 +13,11 @@ Directed weighted graphs
 	Connectivity, cost of connectivity, reachability, cycles can come from these graphs
 
 
-Whatever can come for weighted graphs, can come for unweighted graphs, as they are just a special case of weighted graphs
+Whatever can come for weighted graphs, can come for unweighted graphs, as they are just a special case of weighted graphs.
+
+
+We will discuss the two types of traversal BFS and DFS for both adjancency matrix/ adjancency list and iterative/recursive ways
+
+unless and until specifically specifically asked otherwise, we will use the adjancency list representation of the graph.
+DFS, unless explicitly stated, should always be assumed to be implemented recursive only.
+For BFS, recursive way does not make any sense (because we use a queue and not a stack, and a recursion only makes sense when a stack gets involved). Hence it has to be iterative only.
