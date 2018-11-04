@@ -2,7 +2,7 @@ package dev.abhinav;
 
 import java.util.ArrayList;
 
-import dev.abhinav.graphs.GraphUtils;
+import dev.abhinav.graphs.UndirectedUnweightedGraphUtils;
 import dev.abhinav.matrix.MatrixUtils;
 
 public class MainRunner {
@@ -19,58 +19,58 @@ public class MainRunner {
 	
 	private static void testDFSIterativeWithAdjacencyMatrix()
 	{
-		int adjancencyMatrix[][]=GraphUtils.constructGraphAdjacencyMatrixFromInput();
+		int adjancencyMatrix[][]=UndirectedUnweightedGraphUtils.constructGraphAdjacencyMatrixFromInput();
 //		int startNodeIndex=0;
 		int startNodeIndex=2;
 		MatrixUtils.print2DMatrix(adjancencyMatrix);
 		
 		
-		GraphUtils.printDFSGivenAdjacencyMatrix(adjancencyMatrix,startNodeIndex);
+		UndirectedUnweightedGraphUtils.printDFSGivenAdjacencyMatrix(adjancencyMatrix,startNodeIndex);
 	}
 	
 	private static void testDFSIterativeWithAdjacencyList()
 	{
-		ArrayList<ArrayList<Integer>> adjacencyList=GraphUtils.constructGraphAdjancencyListFromInput();
+		ArrayList<ArrayList<Integer>> adjacencyList=UndirectedUnweightedGraphUtils.constructGraphAdjancencyListFromInput();
 		int startNodeIndex=0;
 //		int startNodeIndex=2;
-		GraphUtils.printAdjacencyList(adjacencyList);
-		GraphUtils.printDFSGivenAdjancencyList(adjacencyList, startNodeIndex);
+		UndirectedUnweightedGraphUtils.printAdjacencyList(adjacencyList);
+		UndirectedUnweightedGraphUtils.printDFSGivenAdjancencyList(adjacencyList, startNodeIndex);
 	}
 	
 	private static void testDFSRecursiveWithAdjacencyMatrix()
 	{
-		int adjancencyMatrix[][]=GraphUtils.getSampleAdjacencyMatrix();
+		int adjancencyMatrix[][]=UndirectedUnweightedGraphUtils.getSampleAdjacencyMatrix();
 //		int startNodeIndex=0;
 		int startNodeIndex=2;
 		MatrixUtils.print2DMatrix(adjancencyMatrix);
-		GraphUtils.printDFSGivenAdjacencyMatrixRecursive(adjancencyMatrix, startNodeIndex);
+		UndirectedUnweightedGraphUtils.printDFSGivenAdjacencyMatrixRecursive(adjancencyMatrix, startNodeIndex);
 	}
 	
 	private static void testDFSRecursiveWithAdjacencyList()
 	{
-		int adjacencyMatrix[][]=GraphUtils.getSampleAdjacencyMatrix();
-		ArrayList<ArrayList<Integer>> adjacencyList=GraphUtils.convertAdjacencyMatrixToAdjacencyList(adjacencyMatrix);
+		int adjacencyMatrix[][]=UndirectedUnweightedGraphUtils.getSampleAdjacencyMatrix();
+		ArrayList<ArrayList<Integer>> adjacencyList=UndirectedUnweightedGraphUtils.convertAdjacencyMatrixToAdjacencyList(adjacencyMatrix);
 //		int startNodeIndex=0;
 		int startNodeIndex=2;
-		GraphUtils.printAdjacencyList(adjacencyList);
-		GraphUtils.printDFSGivenAdjacencyListRecursive(adjacencyList, startNodeIndex);
+		UndirectedUnweightedGraphUtils.printAdjacencyList(adjacencyList);
+		UndirectedUnweightedGraphUtils.printDFSGivenAdjacencyListRecursive(adjacencyList, startNodeIndex);
 	}
 	
 	private static void testBFSIterativeWithAdjacencyMatrix()
 	{
-		int adjacencyMatrix[][]=GraphUtils.getSampleAdjacencyMatrix();
+		int adjacencyMatrix[][]=UndirectedUnweightedGraphUtils.getSampleAdjacencyMatrix();
 //		int startNodeIndex=0;
 		int startNodeIndex=2;
 //		GraphUtils.printAdjacencyList(adjacencyList);
-		GraphUtils.printBFSIterativeGivenAdjacencyMatrix(adjacencyMatrix, startNodeIndex);
+		UndirectedUnweightedGraphUtils.printBFSIterativeGivenAdjacencyMatrix(adjacencyMatrix, startNodeIndex);
 	}
 	
 	private static void testBFSIterativeWithAdjacencyList()
 	{
-		int adjacencyMatrix[][]=GraphUtils.getSampleAdjacencyMatrix();
-		ArrayList<ArrayList<Integer>> adjacencyList=GraphUtils.convertAdjacencyMatrixToAdjacencyList(adjacencyMatrix);
+		int adjacencyMatrix[][]=UndirectedUnweightedGraphUtils.getSampleAdjacencyMatrix();
+		ArrayList<ArrayList<Integer>> adjacencyList=UndirectedUnweightedGraphUtils.convertAdjacencyMatrixToAdjacencyList(adjacencyMatrix);
 		int startNodeIndex=0;
 //		int startNodeIndex=2;
-		GraphUtils.printBFSIterativeGivenAdjacencyList(adjacencyList, startNodeIndex);
+		UndirectedUnweightedGraphUtils.printBFSIterativeGivenAdjacencyList(adjacencyList, startNodeIndex);
 	}
 }

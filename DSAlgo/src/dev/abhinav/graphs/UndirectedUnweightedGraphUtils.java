@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class GraphUtils {
+public class UndirectedUnweightedGraphUtils {
 	/*
 	 * assumption is that all values are integer values
 	 */
