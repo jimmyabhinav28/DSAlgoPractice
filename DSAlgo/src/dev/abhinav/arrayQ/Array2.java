@@ -81,9 +81,12 @@ public class Array2 {
 		for (int i = array.size() - 2; i >= 0; i--) // -2 because we skipped the last element as it has nothing to it's
 													// right. We have added -1 to the result list
 		{
-			greatestElementToRight.add(0, maxSeenTillNowGoingFromEndToStart);
-			if (array.get(i).intValue() > maxSeenTillNowGoingFromEndToStart)
+			if (array.get(i).intValue() <= maxSeenTillNowGoingFromEndToStart)
+				greatestElementToRight.add(0, maxSeenTillNowGoingFromEndToStart);
+			if (array.get(i).intValue() > maxSeenTillNowGoingFromEndToStart) {
+				greatestElementToRight.add(0, -1);
 				maxSeenTillNowGoingFromEndToStart = array.get(i).intValue();
+			}
 		}
 		return greatestElementToRight;
 	}
