@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+E:\github\DSAlgoPractice\.metadata\.plugins\org.eclipse.jdt.core
+129445225.index
+2842528100.index

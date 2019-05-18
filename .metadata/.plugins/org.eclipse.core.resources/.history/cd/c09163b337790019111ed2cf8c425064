@@ -1,0 +1,51 @@
+package dev.abhinav.arrayQ;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Array2 {
+
+	/**
+	 * 
+	 * @param array Array should have only three distinct values, repeated any
+	 *              number of times
+	 * @return
+	 */
+	public static List<Integer> sortArrayHavingOnlyThreeValues(List<Integer> array) {
+
+		List<Integer> sortedArray = new ArrayList<Integer>();
+		Integer min=findMinimumInIntegerArray(array);
+		Integer max=findMaximumInIntegerArray(array);
+		
+		int arrayLength=array.size();
+		for (int i = 0; i < arrayLength; i++)
+		{
+			Integer currentValue=array.get(0);
+			array.remove(0);
+			if(currentValue.intValue()==max.intValue())
+			{	sortedArray.add(currentValue); break;}
+			if(currentValue.intValue()==min.intValue())
+				sortedArray.add(0, currentValue);
+			
+		}
+			return sortedArray;
+	}
+
+	private static Integer findMaximumInIntegerArray(List<Integer> array) {
+		Integer max = Integer.MIN_VALUE;
+		for (Integer i : array) {
+			if (i.intValue() > max.intValue())
+				max = i;
+		}
+		return max;
+	}
+
+	private static Integer findMinimumInIntegerArray(List<Integer> array) {
+		Integer min = Integer.MAX_VALUE;
+		for (Integer i : array) {
+			if (i.intValue() < min.intValue())
+				min = i;
+		}
+		return min;
+	}
+}
