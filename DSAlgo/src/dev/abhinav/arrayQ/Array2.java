@@ -1,6 +1,8 @@
 package dev.abhinav.arrayQ;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -53,5 +55,17 @@ public class Array2 {
 				min = i;
 		}
 		return min;
+	}
+	
+	public static String formLargestIntegerFromAnArrayOfNumbers(List<Integer> array)
+	{
+		CustomComparator comparator=new CustomComparator();
+		Collections.sort(array,comparator);
+		System.out.println(array.toString());
+		StringBuffer buffer=new StringBuffer();
+		for(int i=0;i<array.size();i++)
+			buffer.append(array.get(i).toString());
+			
+		return buffer.toString();
 	}
 }
