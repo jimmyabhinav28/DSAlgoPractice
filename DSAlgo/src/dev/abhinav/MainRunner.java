@@ -1,7 +1,10 @@
 package dev.abhinav;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+import dev.abhinav.arrayQ.Array2;
 import dev.abhinav.graphs.UndirectedUnweightedGraphUtils;
 import dev.abhinav.matrix.MatrixUtils;
 
@@ -14,9 +17,24 @@ public class MainRunner {
 //		testDFSRecursiveWithAdjacencyMatrix();
 //		testDFSRecursiveWithAdjacencyList();
 //		testBFSIterativeWithAdjacencyMatrix();
-		testBFSIterativeWithAdjacencyList();
+//		testBFSIterativeWithAdjacencyList();
+		testSortArrayHavingOnlyThreeValues();
 	}
 	
+	private static void testSortArrayHavingOnlyThreeValues()
+	{
+		List<Integer> array=new ArrayList<Integer>();
+		array.add(1);
+		array.add(2);
+		array.add(3);
+		array.add(1);
+		array.add(3);
+		array.add(2);
+		
+		List<Integer> sortedArray=Array2.sortArrayHavingOnlyThreeValues(array);
+		System.out.println(sortedArray.toString());
+		
+	}
 	private static void testDFSIterativeWithAdjacencyMatrix()
 	{
 		int adjancencyMatrix[][]=UndirectedUnweightedGraphUtils.constructGraphAdjacencyMatrixFromInput();
