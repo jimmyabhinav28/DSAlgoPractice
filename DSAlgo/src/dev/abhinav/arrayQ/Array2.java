@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class Array2 {
@@ -86,5 +87,29 @@ public class Array2 {
 				maxSeenTillNowGoingFromEndToStart=array.get(i).intValue();
 		}
 		return greatestElementToRight;
+	}
+	
+	public static List<Integer>countingSort(List<Integer>array, List<Integer> permissibleDigits)
+	{
+		List<Integer> sortedArray=new ArrayList<>();
+		LinkedHashMap<Integer, Integer> count=new LinkedHashMap<>();
+		Collections.sort(permissibleDigits);
+		for(Integer i:permissibleDigits)
+			count.put(i, 0);
+		//not checking if the integer is not among permissible digits
+		for(Integer i: array)
+		{
+			int countOfI=count.get(i).intValue();
+			countOfI++;
+			count.put(i, countOfI);
+		}
+		
+		for(int i=0;i<permissibleDigits.size();i++)
+		{
+			for(int j=0;j<count.get(permissibleDigits.get(i).intValue());j++)
+					sortedArray.add(permissibleDigits.get(i));
+		}
+		return sortedArray;
+				
 	}
 }

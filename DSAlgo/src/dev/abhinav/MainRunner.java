@@ -20,7 +20,28 @@ public class MainRunner {
 //		testBFSIterativeWithAdjacencyList();
 //		testSortArrayHavingOnlyThreeValues();
 //		testFormLargestIntegerFromAnArrayOfNumbers();
-		testPrintGreatestElementToRight();
+//		testPrintGreatestElementToRight();
+		testCountingSort();
+	}
+	
+	private static void testCountingSort()
+	{
+		List<Integer> array=new ArrayList<Integer>();
+		array.add(1);
+		array.add(2);
+		array.add(4);
+		array.add(1);
+		array.add(3);
+		array.add(2);
+		
+		List<Integer> permissibleDigits=new ArrayList<Integer>();
+		permissibleDigits.add(0);
+		permissibleDigits.add(1);
+		permissibleDigits.add(2);
+		permissibleDigits.add(3);
+		permissibleDigits.add(4);
+		System.out.println(Array2.countingSort(array,permissibleDigits));
+		
 	}
 	
 	private static void testFormLargestIntegerFromAnArrayOfNumbers()
