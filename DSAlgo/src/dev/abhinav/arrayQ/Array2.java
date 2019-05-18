@@ -68,4 +68,23 @@ public class Array2 {
 			
 		return buffer.toString();
 	}
+	
+	/**
+	 * For all elements in an array print the greatest number to it's right.For last element
+	 * print -1
+	 */
+	public static List<Integer> printGreatestElementToRight(List<Integer> array)
+	{
+		System.out.println("Input array:\n"+array.toString());
+		List<Integer> greatestElementToRight=new ArrayList<Integer>();
+		greatestElementToRight.add(-1);
+		int maxSeenTillNowGoingFromEndToStart=array.get(array.size()-1);
+		for(int i=array.size()-2;i>=0;i--) //-2 because we skipped the last element as it has nothing to it's right. We have added -1 to the result list
+		{
+			greatestElementToRight.add(0,maxSeenTillNowGoingFromEndToStart);
+			if(array.get(i).intValue()>maxSeenTillNowGoingFromEndToStart)
+				maxSeenTillNowGoingFromEndToStart=array.get(i).intValue();
+		}
+		return greatestElementToRight;
+	}
 }

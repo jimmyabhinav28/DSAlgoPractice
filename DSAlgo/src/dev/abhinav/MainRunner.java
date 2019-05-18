@@ -19,7 +19,8 @@ public class MainRunner {
 //		testBFSIterativeWithAdjacencyMatrix();
 //		testBFSIterativeWithAdjacencyList();
 //		testSortArrayHavingOnlyThreeValues();
-		testFormLargestIntegerFromAnArrayOfNumbers();
+//		testFormLargestIntegerFromAnArrayOfNumbers();
+		testPrintGreatestElementToRight();
 	}
 	
 	private static void testFormLargestIntegerFromAnArrayOfNumbers()
@@ -34,6 +35,21 @@ public class MainRunner {
 		
 		String largestNumber=Array2.formLargestIntegerFromAnArrayOfNumbers(array);
 		System.out.println(largestNumber);
+		
+	}
+	
+	private static void testPrintGreatestElementToRight()
+	{
+		List<Integer> array=new ArrayList<Integer>();
+		array.add(70);
+		array.add(12);
+		array.add(8);
+		array.add(1);
+		array.add(3);
+		array.add(9);
+		
+		List<Integer> result=Array2.printGreatestElementToRight(array);
+		System.out.println(result.toString());
 		
 	}
 	
