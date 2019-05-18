@@ -2,10 +2,10 @@ package dev.abhinav.arrayQ;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Stack;
 
 public class Array2 {
 
@@ -57,59 +57,82 @@ public class Array2 {
 		}
 		return min;
 	}
-	
-	public static String formLargestIntegerFromAnArrayOfNumbers(List<Integer> array)
-	{
-		CustomComparator comparator=new CustomComparator();
-		Collections.sort(array,comparator);
+
+	public static String formLargestIntegerFromAnArrayOfNumbers(List<Integer> array) {
+		CustomComparator comparator = new CustomComparator();
+		Collections.sort(array, comparator);
 		System.out.println(array.toString());
-		StringBuffer buffer=new StringBuffer();
-		for(int i=0;i<array.size();i++)
+		StringBuffer buffer = new StringBuffer();
+		for (int i = 0; i < array.size(); i++)
 			buffer.append(array.get(i).toString());
-			
+
 		return buffer.toString();
 	}
-	
+
 	/**
-	 * For all elements in an array print the greatest number to it's right.For last element
-	 * print -1
+	 * For all elements in an array print the greatest number to it's right.For last
+	 * element print -1
 	 */
-	public static List<Integer> printGreatestElementToRight(List<Integer> array)
-	{
-		System.out.println("Input array:\n"+array.toString());
-		List<Integer> greatestElementToRight=new ArrayList<Integer>();
+	public static List<Integer> printGreatestElementToRight(List<Integer> array) {
+		System.out.println("Input array:\n" + array.toString());
+		List<Integer> greatestElementToRight = new ArrayList<Integer>();
 		greatestElementToRight.add(-1);
-		int maxSeenTillNowGoingFromEndToStart=array.get(array.size()-1);
-		for(int i=array.size()-2;i>=0;i--) //-2 because we skipped the last element as it has nothing to it's right. We have added -1 to the result list
+		int maxSeenTillNowGoingFromEndToStart = array.get(array.size() - 1);
+		for (int i = array.size() - 2; i >= 0; i--) // -2 because we skipped the last element as it has nothing to it's
+													// right. We have added -1 to the result list
 		{
-			greatestElementToRight.add(0,maxSeenTillNowGoingFromEndToStart);
-			if(array.get(i).intValue()>maxSeenTillNowGoingFromEndToStart)
-				maxSeenTillNowGoingFromEndToStart=array.get(i).intValue();
+			greatestElementToRight.add(0, maxSeenTillNowGoingFromEndToStart);
+			if (array.get(i).intValue() > maxSeenTillNowGoingFromEndToStart)
+				maxSeenTillNowGoingFromEndToStart = array.get(i).intValue();
 		}
 		return greatestElementToRight;
 	}
-	
-	public static List<Integer>countingSort(List<Integer>array, List<Integer> permissibleDigits)
-	{
-		List<Integer> sortedArray=new ArrayList<>();
-		LinkedHashMap<Integer, Integer> count=new LinkedHashMap<>();
+
+	public static List<Integer> countingSort(List<Integer> array, List<Integer> permissibleDigits) {
+		List<Integer> sortedArray = new ArrayList<>();
+		LinkedHashMap<Integer, Integer> count = new LinkedHashMap<>();
 		Collections.sort(permissibleDigits);
-		for(Integer i:permissibleDigits)
+		for (Integer i : permissibleDigits)
 			count.put(i, 0);
-		//not checking if the integer is not among permissible digits
-		for(Integer i: array)
-		{
-			int countOfI=count.get(i).intValue();
+		// not checking if the integer is not among permissible digits
+		for (Integer i : array) {
+			int countOfI = count.get(i).intValue();
 			countOfI++;
 			count.put(i, countOfI);
 		}
-		
-		for(int i=0;i<permissibleDigits.size();i++)
-		{
-			for(int j=0;j<count.get(permissibleDigits.get(i).intValue());j++)
-					sortedArray.add(permissibleDigits.get(i));
+
+		for (int i = 0; i < permissibleDigits.size(); i++) {
+			for (int j = 0; j < count.get(permissibleDigits.get(i).intValue()); j++)
+				sortedArray.add(permissibleDigits.get(i));
 		}
 		return sortedArray;
-				
+
+	}
+
+	/**
+	 * Find the next greater element to the right of each element in the right If
+	 * there isn't a greater element to the right of an element use -1 as the next
+	 * greater element
+	 * 
+	 * @param array integer array of 0's and +ve integers
+	 * @return
+	 */
+	public static void nextGreaterElementToRight(List<Integer> array) {
+		System.out.println("Input array " + array.toString());
+		Stack<Integer> stack = new Stack<>();
+		stack.push(array.get(0));
+
+		for (int i = 1; i < array.size(); i++) {
+			Integer currentElement = array.get(i);
+			while (!stack.isEmpty() && stack.peek().intValue() < currentElement.intValue()) {
+				System.out.println("NGE for " + stack.pop() + " is " + currentElement);
+			}
+			stack.push(currentElement);
+
+		}
+
+		while (!stack.isEmpty()) {
+			System.out.println("NGE for " + stack.pop() + " is -1");
+		}
 	}
 }

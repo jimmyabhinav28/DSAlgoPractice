@@ -21,7 +21,8 @@ public class MainRunner {
 //		testSortArrayHavingOnlyThreeValues();
 //		testFormLargestIntegerFromAnArrayOfNumbers();
 //		testPrintGreatestElementToRight();
-		testCountingSort();
+//		testCountingSort();
+		testNextGreaterElement();
 	}
 	
 	private static void testCountingSort()
@@ -42,6 +43,19 @@ public class MainRunner {
 		permissibleDigits.add(4);
 		System.out.println(Array2.countingSort(array,permissibleDigits));
 		
+	}
+	
+	private static void testNextGreaterElement()
+	{
+		List<Integer> array=new ArrayList<Integer>();
+		array.add(5);
+		array.add(6);
+		array.add(8);
+		array.add(10);
+		array.add(3);
+		array.add(2);
+		
+		Array2.nextGreaterElementToRight(array);
 	}
 	
 	private static void testFormLargestIntegerFromAnArrayOfNumbers()
